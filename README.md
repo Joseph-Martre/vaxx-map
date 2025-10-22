@@ -77,7 +77,7 @@ Licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**
 
 Modifications include adaptation for web integration and data mapping in React.
 
-When distributing or publishing this project, please retain this attribution in source files or in an \`ATTRIBUTIONS.md\` / \`LICENSES\` file as required by CC BY 4.0.
+When distributing or publishing this project, please retain this attribution in source files or in an `ATTRIBUTIONS.md` / `LICENSES` file as required by CC BY 4.0.
 
 ---
 
