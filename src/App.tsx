@@ -37,7 +37,7 @@ function App() {
   const handleDepartmentClicked = useCallback((e: MouseEvent) => {
     const target = e.target;
     if (!(target instanceof SVGPathElement)) return;
-    const departmentNumber = target.dataset.numerodepartement ?? "01";
+    const departmentNumber = target.dataset.numerodepartement ?? "29";
     if (datalessDepartmentCodes.has(departmentNumber)) {
       return;
     }
@@ -94,29 +94,31 @@ function App() {
             <output htmlFor="coverage-target"> {coverageTarget}%</output>
             <p> Taux de vaccination cible selon l'OMS: 75%</p>
           </div>
-          {Object.entries(departmentData).map(([yearKey, coverage]) => (
-            <div className="meter-container" key={yearKey}>
-              <p>
-                <label htmlFor={`coverage-${yearKey}`}>
-                  {yearKey === "nextYearLinearExtrapolation"
-                    ? "Prédiction 2025"
-                    : yearKey}
-                </label>
-              </p>
+          {Object.entries(departmentData)
+            .reverse()
+            .map(([yearKey, coverage]) => (
+              <div className="meter-container" key={yearKey}>
+                <p>
+                  <label htmlFor={`coverage-${yearKey}`}>
+                    {yearKey === "nextYearLinearExtrapolation"
+                      ? "Prédiction 2025"
+                      : yearKey}
+                  </label>
+                </p>
 
-              <span>
-                <meter
-                  id={`coverage-${yearKey}`}
-                  min="0"
-                  max="100"
-                  high={coverageTarget - 0.1}
-                  optimum={coverageTarget}
-                  value={Math.round(coverage)}
-                ></meter>
-                {` ${Math.round(coverage)}%`}
-              </span>
-            </div>
-          ))}
+                <span>
+                  <meter
+                    id={`coverage-${yearKey}`}
+                    min="0"
+                    max="100"
+                    high={coverageTarget - 0.1}
+                    optimum={coverageTarget}
+                    value={Math.round(coverage)}
+                  ></meter>
+                  {` ${Math.round(coverage)}%`}
+                </span>
+              </div>
+            ))}
         </aside>
       </div>
     </>
