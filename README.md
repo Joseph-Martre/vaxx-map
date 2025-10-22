@@ -1,73 +1,104 @@
-# React + TypeScript + Vite
+# 🗺️ Vaxx Map — Interactive Flu Vaccine Coverage Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Vaxx Map** is a simple, interactive React + TypeScript dashboard that visualizes flu vaccination coverage across French departments.  
+Users can select a **department**, **year**, and **target vaccination rate**, and receive **visual feedback** on current and predicted coverage.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Getting Started
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
+```bash
+git clone https://github.com/Joseph-Martre/vaxx-map.git
+cd vaxx-map
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Install dependencies
+```bash
+npm install
 ```
+
+### 3. Run the project in development mode
+```bash
+npm run dev
+```
+Then open the provided local URL (usually `http://localhost:5173`) in your browser.
+
+### 4. Build for production
+```bash
+npm run build
+```
+The built files will appear in the `dist/` directory.
+
+---
+
+## 📊 Data Overview
+
+The app uses one main JSON dataset:
+
+**Vaccination Coverage Map** — maps department codes to yearly coverage data:
+```json
+{
+  "30": {
+    "2020": 49,
+    "2021": 45,
+    "2022": 49,
+    "2023": 46,
+    "2024": 46,
+    "nextYearLinearExtrapolation": 45,
+  }
+}
+```
+
+Each department’s **next-year prediction** is computed using **simple linear extrapolation** based on previous years’ values.  
+> 💡 This is *not* a machine learning or AI-based model — just straightforward statistical projection.
+
+---
+
+## 🧠 Project Description
+
+- Built with **React**, **TypeScript**, and **Vite**.  
+- Features an interactive **SVG map of France**.
+- Allows users to:
+  - Select a **department**
+  - Choose a **year**
+  - Define a **target vaccination rate**
+  - View corresponding visual feedback directly on the map.
+
+---
+
+## 🗺️ Map Attribution
+
+This project includes a modified version of an SVG map of French departments from:
+
+**Régis Enguehard** — [carte-france-svg](https://github.com/regisenguehard/carte-france-svg)  
+Licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**  
+[http://creativecommons.org/licenses/by/4.0/](http://creativecommons.org/licenses/by/4.0/)
+
+Modifications include adaptation for web integration and data mapping in React.
+
+When distributing or publishing this project, please retain this attribution in source files or in an \`ATTRIBUTIONS.md\` / \`LICENSES\` file as required by CC BY 4.0.
+
+---
+
+## 👥 Collaborators
+
+- **Hugo Fougeret**  
+- **Joseph Martre**  
+- **Fares Mansour**  
+- **Juliette Brisard**
+
+---
+
+## ⚖️ License
+
+This project’s code is released under the **ISC License**.  
+The French department SVG map remains under **CC BY 4.0** as per the original author’s license.
+
+---
+
+## 🧩 Tech Stack
+
+- React + TypeScript  
+- Vite  
+- Vanilla CSS
